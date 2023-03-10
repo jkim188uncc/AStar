@@ -9,7 +9,7 @@ After completing this exercise you will be able to:
 
 # Code Base Details
 
-For this program you will be implementing the A Star algorithm into an already made GUI. The **only** file you should be editing is `src/main/java/com/astar/AStar/java`. This file contains a single method **findPath** which is provided a **Board** and two **Points**, a start and end point. This method returns an `ArrayList<Space>` of **Space**s that make up the path from *start* to *end*.
+For this program you will be implementing the A Star algorithm into an already made GUI. The **only** file you should be editing is `src/main/java/com/astar/AStar/java`. This file contains a single method named **findPath**, which expects 3 paremeters: **Board** and two **Points**, a start and end point. This method returns an `ArrayList<Space>` of **Space**s that make up the path from *start* to *end*.
 
 ```Java
 public static ArrayList<Space> findPath(Board board, Point start, Point end) {
@@ -34,14 +34,17 @@ public static ArrayList<Space> findPath(Board board, Point start, Point end) {
 # A Star Implementation
 This assignment only requires a path finding implementation, in this case A Star. All code should be contained in the `AStar.java` file, you shouldn't need to edit any other files. If you need a function that defines a **heuristic**, you can define it in the same file. 
 
-There are many great references out there that have AStar pseudocode, [Wikipedia](https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode) being on of many.
+There are many great references out there that have AStar pseudocode, [Wikipedia](https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode) being one of many.
 
 A good way to check your work is to run the program often. If there is any issues with the implementation they should be easy to spot.
 
 # Up and Running
-This codebase has been run with the latest version of Java (17) using [Eclipse](https://www.eclipse.org/downloads/), [IntelliJ](https://www.jetbrains.com/idea/) and [VSCode](https://code.visualstudio.com/). After cloning and opening the assignment with your IDE of choice you should be able to run the program and see a GUI. 
+This codebase has been run with the latest version of [Java (17)](https://www.oracle.com/java/technologies/downloads/#java17) using [Eclipse](https://www.eclipse.org/downloads/), [IntelliJ](https://www.jetbrains.com/idea/) and [VSCode](https://code.visualstudio.com/). After cloning and opening the assignment with your IDE of choice you should be able to run the program and see a GUI. 
 
 You can either *clone* or download the assignment. Using [Git](https://git-scm.com/) and forking / cloning the codebase is encouraged. However, **DO NOT MAKE YOUR CODE PUBLIC**.
+
+## Using Maven (Optional)
+Included is a `pom.xml` that defines some basic lifecycle operations. It's not needed for this assignment, but if you're comfortable or interested in getting familiar with Maven you can find some more information here [Maven Getting Started](https://maven.apache.org/guides/getting-started/). Most IDEs will pick up on the `pom.xml` and you shouldn't need to do anything special. 
 
 # GUI Controls
  * Left/Primary click on a tile to specify the **start** then click on another tile to specify the **end**. After both are defines the `findPath` method is called and the given path is displayed.
