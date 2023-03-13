@@ -31,6 +31,15 @@ public static ArrayList<Space> findPath(Board board, Point start, Point end) {
   * To be successful it's important to understand the information provided by the **Board** and its **Spaces**.
 * The **findPath** method returns an **ArrayList** of **Spaces** in order from *start* to *end*.
 
+## Setting the Path
+When you have found the path it's important to let the GUI know what spaces are 'path' spaces. You can do this by setting the **SpaceType** of each of the spaces to **SpaceType.PATH**. See below for some example code.
+
+```java
+//Set the SpaceTypes on the board to be paths
+if (space.getType() == SpaceType.EMPTY)
+    space.setType(SpaceType.PATH);
+```
+
 # A Star Implementation
 This assignment only requires a path finding implementation, in this case A Star. All code should be contained in the `AStar.java` file, you shouldn't need to edit any other files. If you need a function that defines a **heuristic**, you can define it in the same file. 
 
