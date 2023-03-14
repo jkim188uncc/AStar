@@ -232,6 +232,10 @@ public class Main {
                                     StringBuilder out = new StringBuilder();
 
                                     for (Space space : path) {
+                                        // Update the spaces to reflect the path
+                                        if (space.getType() == SpaceType.EMPTY)
+                                            space.setType(SpaceType.PATH);
+
                                         out.append(space.getPointString()).append(" ");
                                     }
 
