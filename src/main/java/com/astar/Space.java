@@ -7,7 +7,7 @@ import java.awt.*;
 public class Space implements Comparable<Space> {
 
     private SpaceType type;
-    private int distTo, distFrom;
+    private int g, h;
     private final Point POINT;
     private Space previous;
 
@@ -37,32 +37,32 @@ public class Space implements Comparable<Space> {
      * Get the distance to this space
      * @return The distance to this space
      */
-    public int getDistTo() {
-        return distTo;
+    public int getG() {
+        return g;
     }
 
     /**
      * Set the distance to this space
-     * @param distTo The distance to this space
+     * @param g The distance to this space
      */
-    public void setDistTo(int distTo) {
-        this.distTo = distTo;
+    public void setG(int g) {
+        this.g = g;
     }
 
     /**
      * Get the distance from this space
      * @return The distance from this space
      */
-    private int getDistFrom() {
-        return distFrom;
+    public int getH() {
+        return h;
     }
 
     /**
      * Set the distance from this space
-     * @param distFrom The distance from this space
+     * @param h The distance from this space
      */
-    public void setDistFrom(int distFrom) {
-        this.distFrom = distFrom;
+    public void setH(int h) {
+        this.h = h;
     }
 
     /**
@@ -94,8 +94,8 @@ public class Space implements Comparable<Space> {
      * position to the ending position
      * @return The total estimated distance
      */
-    private int getDist(){
-        return this.getDistFrom() + this.getDistTo();
+    public int getF(){
+        return this.getH() + this.getG();
     }
 
     /**
@@ -121,6 +121,11 @@ public class Space implements Comparable<Space> {
         switch (this.type){
             case BLOCK -> this.type = SpaceType.EMPTY;
             case EMPTY -> this.type = SpaceType.BLOCK;
+            case END -> throw new UnsupportedOperationException("Unimplemented case: " + this.type);
+            case INVALID -> throw new UnsupportedOperationException("Unimplemented case: " + this.type);
+            case PATH -> throw new UnsupportedOperationException("Unimplemented case: " + this.type);
+            case START -> throw new UnsupportedOperationException("Unimplemented case: " + this.type);
+            default -> throw new IllegalArgumentException("Unexpected value: " + this.type);
         }
     }
 
@@ -128,8 +133,8 @@ public class Space implements Comparable<Space> {
      * Reset the values without altering any blocks
      */
     public void reset(){
-        this.setDistTo(0);
-        this.setDistFrom(0);
+        this.setG(0);
+        this.setH(0);
         this.setPrevious(null);
         if (!(this.getType() == SpaceType.BLOCK || this.getType() == SpaceType.INVALID))
             this.setType(SpaceType.EMPTY);
@@ -151,7 +156,7 @@ public class Space implements Comparable<Space> {
      */
     @Override
     public int compareTo(Space space) {
-        return Integer.compare(this.getDist(), space.getDist());
+        return Integer.compare(this.getF(), space.getF());
     }
 
     /**
